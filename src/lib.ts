@@ -1,8 +1,5 @@
 import { TextChannel } from "discord.js";
 
-export const snowflakeToDate = (snowflake: string) =>
-  new Date(Number(snowflake) / 4194304 + 1420070400000);
-
 export const getMpm = (channel: TextChannel) =>
   channel.messages.cache
     .map((message) => Date.now() - message.createdTimestamp)
