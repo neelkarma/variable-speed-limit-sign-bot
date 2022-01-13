@@ -1,0 +1,24 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+model Channel {
+  id    String @id @unique
+  rules Rule[]
+}
+
+model Rule {
+  id        String  @id // Format: CHANNEL_ID:THRESHOLD
+  threshold Int
+  slowmode  Int
+  channel   Channel @relation(fields: [channelId], references: [id])
+  channelId String  @unique
+}
