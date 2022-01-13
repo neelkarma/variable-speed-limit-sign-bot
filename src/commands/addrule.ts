@@ -1,6 +1,6 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
 import { TextChannel } from "discord.js";
-import { Command } from "structures/command";
+import { Command } from "../structures/command";
 import { db } from "../structures/db";
 
 export default {
