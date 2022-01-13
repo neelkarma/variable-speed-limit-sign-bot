@@ -1,5 +1,5 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
-import { TextChannel } from "discord.js";
+import { TextChannel, Permissions } from "discord.js";
 import { Command } from "../structures/command";
 import { db } from "../structures/db";
 
@@ -17,6 +17,16 @@ export default {
           .addChannelType(0) // GuildText
     ),
   execute: async (interaction) => {
+    if (
+      !interaction.memberPermissions?.has([
+        Permissions.FLAGS.MANAGE_MESSAGES,
+        Permissions.FLAGS.MANAGE_CHANNELS,
+      ])
+    )
+      return await interaction.reply(
+        "You don't have the sufficient permissions to execute this command!"
+      );
+
     const channel =
       (interaction.options.getChannel("channel") as TextChannel | null) ??
       (interaction.channel as TextChannel);
