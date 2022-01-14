@@ -27,23 +27,25 @@ export default {
         "You don't have the sufficient permissions to execute this command!"
       );
 
+    interaction.deferReply();
+
     const channel =
       (interaction.options.getChannel("channel") as TextChannel | null) ??
       (interaction.channel as TextChannel);
 
-    await Promise.all([
-      db.rule.deleteMany({
-        where: {
-          channelId: channel.id,
-        },
-      }),
-      db.channel.delete({
-        where: {
-          id: channel.id,
-        },
-      }),
-    ]);
+    await db.rule.deleteMany({
+      where: {
+        channelId: channel.id,
+      },
+    });
 
-    interaction.reply(`Rules for ${channel} successfully cleared.`);
+    // Using deleteMany as delete fails if no records are found
+    await db.channel.deleteMany({
+      where: {
+        id: channel.id,
+      },
+    });
+
+    interaction.editReply(`Rules for ${channel} successfully cleared.`);
   },
 } as Command;

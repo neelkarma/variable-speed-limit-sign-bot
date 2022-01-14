@@ -5,8 +5,8 @@ import { db } from "../structures/db";
 
 export default {
   data: new SlashCommandBuilder()
-    .setName("addrule")
-    .setDescription("Adds a new rule to this channel.")
+    .setName("setrule")
+    .setDescription("Sets a new rule in this channel.")
     .addIntegerOption((option) =>
       option
         .setName("threshold")
@@ -41,6 +41,8 @@ export default {
         "You don't have the sufficient permissions to execute this command!"
       );
 
+    interaction.deferReply();
+
     const threshold = interaction.options.getInteger("threshold")!;
     const slowmode = interaction.options.getInteger("slowmode")!;
     const channel =
@@ -72,8 +74,8 @@ export default {
       },
     });
 
-    interaction.reply(
-      `New rule added to ${channel}: Set slowmode to ${slowmode} seconds when there are ${threshold} or more messages per minute.`
+    interaction.editReply(
+      `Rule set in ${channel}: Set slowmode to ${slowmode} seconds when there are ${threshold} or more messages per minute.`
     );
   },
 } as Command;

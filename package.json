@@ -4,7 +4,9 @@
     "dev": "tsc-watch --onSuccess \"node ./dist/index.js\"",
     "build": "tsc",
     "deploy:dev": "tsc && node ./deploy.dev.js",
-    "deploy:prod": "tsc && node ./deploy.prod.js"
+    "deploy:prod": "tsc && node ./deploy.prod.js",
+    "undeploy:dev": "node ./undeploy.dev.js",
+    "undeploy:prod": "node ./undeploy.prod.js"
   },
   "devDependencies": {
     "@types/node": "^17.0.5",

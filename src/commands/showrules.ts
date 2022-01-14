@@ -17,6 +17,8 @@ export default {
           .addChannelType(0) // GuildText
     ),
   execute: async (interaction) => {
+    interaction.deferReply();
+
     const channel =
       (interaction.options.getChannel("channel") as TextChannel | null) ??
       (interaction.channel as TextChannel);
@@ -34,7 +36,7 @@ export default {
         `There are no rules for ${channel}! Try creating one with \`/addrule\`!`
       );
 
-    interaction.reply(
+    interaction.editReply(
       `Rules for ${channel}:\n${rules
         .map(
           ({ threshold, slowmode }) =>
