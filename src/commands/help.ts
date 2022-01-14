@@ -11,7 +11,7 @@ export default {
     interaction.reply({
       embeds: [
         new MessageEmbed()
-          .setTitle("Adaptive Slowmode Help")
+          .setTitle("Variable Speed Limit Sign Operational Manual")
           .setDescription(
             "This bot lets you set rules to adaptively change the slowmode for a channel depending on it's activity.\n\nCommands:"
           )
