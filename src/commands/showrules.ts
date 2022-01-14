@@ -17,7 +17,7 @@ export default {
           .addChannelType(0) // GuildText
     ),
   execute: async (interaction) => {
-    interaction.deferReply();
+    await interaction.deferReply();
 
     const channel =
       (interaction.options.getChannel("channel") as TextChannel | null) ??

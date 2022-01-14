@@ -27,7 +27,7 @@ export default {
         "You don't have the sufficient permissions to execute this command!"
       );
 
-    interaction.deferReply();
+    await interaction.deferReply();
 
     const channel =
       (interaction.options.getChannel("channel") as TextChannel | null) ??
