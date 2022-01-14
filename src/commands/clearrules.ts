@@ -46,6 +46,12 @@ export default {
       },
     });
 
+    if (
+      interaction.channel?.type === "GUILD_TEXT" &&
+      interaction.channel?.rateLimitPerUser !== 0
+    )
+      await interaction.channel.setRateLimitPerUser(0);
+
     interaction.editReply(`Rules for ${channel} successfully cleared.`);
   },
 } as Command;
