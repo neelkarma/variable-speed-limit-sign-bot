@@ -28,7 +28,12 @@ export const messageCreateEvent = async (message: Message) => {
       channelId: message.channelId,
     },
   });
-  if (!rules.length) return;
+
+  if (!rules.length) {
+    if (message.channel.rateLimitPerUser !== 0)
+      await message.channel.setRateLimitPerUser(0);
+    return;
+  }
 
   const mpm = getMpm(message.channel);
   const targetRule = rules.reduce((highest, current) =>
