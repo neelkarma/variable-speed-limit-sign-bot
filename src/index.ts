@@ -2,9 +2,7 @@ import { Client, Intents } from "discord.js";
 import { config as dotenv } from "dotenv";
 import { readdirSync } from "fs";
 import { Command } from "./structures/command";
-import { db } from "./structures/db";
-import { cooldowns } from "./structures/cooldowns";
-import { clampSlowmode, getMpm, messageCreateEvent } from "./lib";
+import { messageCreateEvent } from "./lib";
 dotenv();
 
 const client = new Client({
@@ -19,10 +17,10 @@ readdirSync("./dist/commands")
     client.commands.set(command.default.data.name, command.default);
   });
 
-client.once("ready", () => {
+client.once("ready", async () => {
+  await client.user?.setActivity({ name: "for /help", type: "WATCHING" });
   console.info("Logged in!");
   console.info(`Tag: ${client.user?.tag}`);
-  console.info(`Client ID: ${client.user?.id}`);
 });
 
 client.on("interactionCreate", (interaction) => {

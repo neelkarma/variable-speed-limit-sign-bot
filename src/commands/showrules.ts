@@ -33,7 +33,7 @@ export default {
 
     if (!rules.length)
       return await interaction.editReply(
-        `There are no rules for ${channel}! Try creating one with \`/addrule\`!`
+        `There are no rules for ${channel}! Try creating one with \`/setrule\`!`
       );
 
     interaction.editReply(
