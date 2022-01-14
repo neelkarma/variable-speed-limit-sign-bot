@@ -32,7 +32,7 @@ export default {
     ).sort(({ threshold: a }, { threshold: b }) => a - b);
 
     if (!rules.length)
-      return await interaction.reply(
+      return await interaction.editReply(
         `There are no rules for ${channel}! Try creating one with \`/addrule\`!`
       );
 
