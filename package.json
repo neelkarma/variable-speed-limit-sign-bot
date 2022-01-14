@@ -3,10 +3,10 @@
   "scripts": {
     "dev": "tsc-watch --onSuccess \"node ./dist/index.js\"",
     "build": "tsc",
-    "deploy:dev": "tsc && node ./deploy.dev.js",
-    "deploy:prod": "tsc && node ./deploy.prod.js",
-    "undeploy:dev": "node ./undeploy.dev.js",
-    "undeploy:prod": "node ./undeploy.prod.js"
+    "deploy:dev": "tsc && node ./scripts/deploy.dev.js",
+    "deploy:prod": "tsc && node ./scripts/deploy.prod.js",
+    "undeploy:dev": "node ./scripts/undeploy.dev.js",
+    "undeploy:prod": "node ./scripts/undeploy.prod.js"
   },
   "devDependencies": {
     "@types/node": "^17.0.5",

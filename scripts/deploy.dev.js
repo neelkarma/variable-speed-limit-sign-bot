@@ -11,7 +11,7 @@ const {
 
 const commands = readdirSync("./dist/commands")
   .filter((file) => file.endsWith(".js"))
-  .map((file) => require(`./dist/commands/${file}`).default.data.toJSON());
+  .map((file) => require(`../dist/commands/${file}`).default.data.toJSON());
 
 const rest = new REST({ version: "9" }).setToken(token);
 
