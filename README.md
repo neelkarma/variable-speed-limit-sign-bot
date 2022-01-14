@@ -1,4 +1,4 @@
-# Adaptive Slowmode Bot
+# Variable Speed Limit Sign
 
 Inspired by this message:
 
