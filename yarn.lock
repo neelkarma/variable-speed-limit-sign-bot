@@ -207,23 +207,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"djs-ts-template@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "djs-ts-template@workspace:."
-  dependencies:
-    "@discordjs/builders": ^0.10.0
-    "@discordjs/rest": ^0.2.0-canary.0
-    "@prisma/client": ^3.8.0
-    "@types/node": ^17.0.5
-    discord-api-types: ^0.26.0
-    discord.js: ^13.5.0
-    dotenv: ^10.0.0
-    prisma: ^3.8.0
-    tsc-watch: ^4.6.0
-    typescript: ^4.5.4
-  languageName: unknown
-  linkType: soft
-
 "dotenv@npm:^10.0.0":
   version: 10.0.0
   resolution: "dotenv@npm:10.0.0"
@@ -481,6 +464,23 @@ __metadata:
   checksum: 2e488dde7d2c4a2fa2e79cf2470600f8ce81bc0563c276b72df8ff412d74456ae532ba824650ae936ce207440c79720ddcfaa25e3cb4477572b8534fa4e34d49
   languageName: node
   linkType: hard
+
+"variable-speed-limit-sign-bot@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "variable-speed-limit-sign-bot@workspace:."
+  dependencies:
+    "@discordjs/builders": ^0.10.0
+    "@discordjs/rest": ^0.2.0-canary.0
+    "@prisma/client": ^3.8.0
+    "@types/node": ^17.0.5
+    discord-api-types: ^0.26.0
+    discord.js: ^13.5.0
+    dotenv: ^10.0.0
+    prisma: ^3.8.0
+    tsc-watch: ^4.6.0
+    typescript: ^4.5.4
+  languageName: unknown
+  linkType: soft
 
 "webidl-conversions@npm:^3.0.0":
   version: 3.0.1

@@ -14,5 +14,5 @@ model Rule {
   id        String @id // Format: CHANNEL_ID:THRESHOLD
   threshold Int
   slowmode  Int
-  channelId String @unique
+  channelId String
 }
