@@ -49,16 +49,6 @@ export default {
       (interaction.options.getChannel("channel") as TextChannel | null) ??
       (interaction.channel as TextChannel);
 
-    await db.channel.upsert({
-      create: {
-        id: channel.id,
-      },
-      update: {},
-      where: {
-        id: channel.id,
-      },
-    });
-
     await db.rule.upsert({
       create: {
         id: `${channel.id}:${threshold}`,

@@ -10,15 +10,9 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Channel {
-  id    String @id @unique
-  rules Rule[]
-}
-
 model Rule {
-  id        String  @id // Format: CHANNEL_ID:THRESHOLD
+  id        String @id // Format: CHANNEL_ID:THRESHOLD
   threshold Int
   slowmode  Int
-  channel   Channel @relation(fields: [channelId], references: [id])
-  channelId String  @unique
+  channelId String @unique
 }
