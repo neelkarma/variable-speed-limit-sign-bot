@@ -1,5 +1,5 @@
 {
-  "name": "djs-ts-template",
+  "name": "variable-speed-limit-sign-bot",
   "scripts": {
     "dev": "tsc-watch --onSuccess \"node ./dist/index.js\"",
     "build": "tsc",
