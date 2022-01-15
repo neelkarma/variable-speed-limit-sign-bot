@@ -39,13 +39,6 @@ export default {
       },
     });
 
-    // Using deleteMany as delete fails if no records are found
-    await db.channel.deleteMany({
-      where: {
-        id: channel.id,
-      },
-    });
-
     if (
       interaction.channel?.type === "GUILD_TEXT" &&
       interaction.channel?.rateLimitPerUser !== 0
