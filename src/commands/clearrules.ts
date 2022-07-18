@@ -1,5 +1,9 @@
-import { SlashCommandBuilder } from "@discordjs/builders";
-import { TextChannel, Permissions } from "discord.js";
+import {
+  SlashCommandBuilder,
+  TextChannel,
+  PermissionsBitField,
+  ChannelType,
+} from "discord.js";
 import { Command } from "../structures/command";
 import { db } from "../structures/db";
 
@@ -7,20 +11,19 @@ export default {
   data: new SlashCommandBuilder()
     .setName("clearrules")
     .setDescription("Clears all rules in the specified channel.")
-    .addChannelOption(
-      (option) =>
-        option
-          .setName("channel")
-          .setDescription(
-            "The channel to clear the rules of. Defaults to the current channel if none specified."
-          )
-          .addChannelType(0) // GuildText
+    .addChannelOption((option) =>
+      option
+        .setName("channel")
+        .setDescription(
+          "The channel to clear the rules of. Defaults to the current channel if none specified."
+        )
+        .addChannelTypes(ChannelType.GuildText)
     ),
   execute: async (interaction) => {
     if (
       !interaction.memberPermissions?.has([
-        Permissions.FLAGS.MANAGE_MESSAGES,
-        Permissions.FLAGS.MANAGE_CHANNELS,
+        PermissionsBitField.Flags.ManageMessages,
+        PermissionsBitField.Flags.ManageChannels,
       ])
     )
       return await interaction.reply(
@@ -30,7 +33,7 @@ export default {
     await interaction.deferReply();
 
     const channel =
-      (interaction.options.getChannel("channel") as TextChannel | null) ??
+      (interaction.options.get("channel") as TextChannel | null) ??
       (interaction.channel as TextChannel);
 
     await db.rule.deleteMany({
@@ -40,7 +43,7 @@ export default {
     });
 
     if (
-      interaction.channel?.type === "GUILD_TEXT" &&
+      interaction.channel?.type === ChannelType.GuildText &&
       interaction.channel?.rateLimitPerUser !== 0
     )
       await interaction.channel.setRateLimitPerUser(0);

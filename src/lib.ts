@@ -1,4 +1,4 @@
-import { Message, TextChannel } from "discord.js";
+import { ChannelType, Message, TextChannel } from "discord.js";
 import { cooldowns } from "./structures/cooldowns";
 import { db } from "./structures/db";
 
@@ -14,7 +14,7 @@ export const clampSlowmode = (slowmode: number) => clamp(slowmode, 0, 21600);
 
 export const messageCreateEvent = async (message: Message) => {
   if (message.author.bot) return;
-  if (message.channel.type !== "GUILD_TEXT") return;
+  if (message.channel.type !== ChannelType.GuildText) return;
   if (cooldowns.has(message.channelId)) return;
 
   cooldowns.add(message.channelId);

@@ -1,7 +1,5 @@
-import { SlashCommandBuilder } from "@discordjs/builders";
-import { MessageEmbed, TextChannel } from "discord.js";
+import { SlashCommandBuilder, EmbedBuilder } from "discord.js";
 import { Command } from "../structures/command";
-import { getMpm } from "../lib";
 
 export default {
   data: new SlashCommandBuilder()
@@ -10,7 +8,7 @@ export default {
   execute: async (interaction) => {
     interaction.reply({
       embeds: [
-        new MessageEmbed()
+        new EmbedBuilder()
           .setTitle("Variable Speed Limit Sign Operational Manual")
           .setDescription(
             "This bot lets you set rules to adaptively change the slowmode for a channel depending on it's activity.\n\nCommands:"

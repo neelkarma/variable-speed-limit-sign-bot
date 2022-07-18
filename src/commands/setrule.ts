@@ -1,5 +1,9 @@
-import { SlashCommandBuilder } from "@discordjs/builders";
-import { Permissions, TextChannel } from "discord.js";
+import {
+  SlashCommandBuilder,
+  PermissionsBitField,
+  TextChannel,
+  ChannelType,
+} from "discord.js";
 import { Command } from "../structures/command";
 import { db } from "../structures/db";
 
@@ -21,20 +25,19 @@ export default {
         .setDescription("The slowmode value in seconds for this rule.")
         .setRequired(true)
     )
-    .addChannelOption(
-      (option) =>
-        option
-          .setName("channel")
-          .setDescription(
-            "The channel to apply the rule to. Defaults to the current channel if none specified."
-          )
-          .addChannelType(0) // GuildText
+    .addChannelOption((option) =>
+      option
+        .setName("channel")
+        .setDescription(
+          "The channel to apply the rule to. Defaults to the current channel if none specified."
+        )
+        .addChannelTypes(ChannelType.GuildText)
     ),
   execute: async (interaction) => {
     if (
       !interaction.memberPermissions?.has([
-        Permissions.FLAGS.MANAGE_MESSAGES,
-        Permissions.FLAGS.MANAGE_CHANNELS,
+        PermissionsBitField.Flags.ManageMessages,
+        PermissionsBitField.Flags.ManageChannels,
       ])
     )
       return await interaction.reply(

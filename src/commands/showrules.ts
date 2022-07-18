@@ -1,5 +1,4 @@
-import { SlashCommandBuilder } from "@discordjs/builders";
-import { TextChannel } from "discord.js";
+import { ChannelType, SlashCommandBuilder, TextChannel } from "discord.js";
 import { Command } from "../structures/command";
 import { db } from "../structures/db";
 
@@ -7,14 +6,13 @@ export default {
   data: new SlashCommandBuilder()
     .setName("showrules")
     .setDescription("Lists rules in the specified channel.")
-    .addChannelOption(
-      (option) =>
-        option
-          .setName("channel")
-          .setDescription(
-            "The channel to list the rules of. Defaults to the current channel if none specified."
-          )
-          .addChannelType(0) // GuildText
+    .addChannelOption((option) =>
+      option
+        .setName("channel")
+        .setDescription(
+          "The channel to list the rules of. Defaults to the current channel if none specified."
+        )
+        .addChannelTypes(ChannelType.GuildText)
     ),
   execute: async (interaction) => {
     await interaction.deferReply();
